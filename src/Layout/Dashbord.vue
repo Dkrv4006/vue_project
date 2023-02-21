@@ -10,7 +10,7 @@ export default {
    
   },
   created() {
-    setInterval(this.ta, 60000)
+    setInterval(this.ta, 999120000)
   },
   computed:{
     lista() {
@@ -39,6 +39,10 @@ export default {
 
 
 <style scoped>
+
+li{
+  list-style: none;
+}
 
 
 
