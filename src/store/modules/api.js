@@ -1,12 +1,20 @@
 import axios from "axios"
+
 const state = {
-  data: []
+  data: ["1daniel"],
+  coin: ['ADAUSDT']
+
 }
 
 const mutations = {
   setData(state, data) {
     state.data = data
     console.log(state, data);
+  },
+  setCoin(state,coin){
+    state.coin = coin
+    // console.log('DAniel');
+     
   }
 }
 
@@ -17,41 +25,43 @@ const actions = {
     
   //   const moedasUSDT = dat.filter(item => item.symbol.slice(-4) === 'USDT');
 
-    const symbols = ['BTCUSDT',"ETHUSDT"]; // lista de símbolos das moedas que você deseja obter o histórico
+    const symbols = this.state.api.coin // lista de símbolos das moedas que você deseja obter o histórico
 const interval = '1M'; // intervalo de tempo mensal
 const limit = 12; // número máximo de resultados (12 meses)
 const startTime = new Date().setFullYear(new Date().getFullYear() - 1); // data de um ano atrás
 const endTime = Date.now(); // data atual
-console.log(startTime);
+console.log(symbols);
 
-    const requests = symbols.map(symbol => {
-      const url = `https://api.binance.com/api/v3/klines?symbol=${symbol}&interval=${interval}&limit=${limit}&startTime=${startTime}&endTime=${endTime}`;
-      return axios.get(url);
-    });
+
+const requests = symbols.map(symbol => {
+  const url = `https://api.binance.com/api/v3/klines?symbol=${symbol}&interval=${interval}&limit=${limit}&startTime=${startTime}&endTime=${endTime}`;
+  return axios.get(url);
+});
+
+
+      try {
+        const responses = await Promise.all(requests);
+        const data = responses.map((response) => {
+          const items = response.data;
+      
+          const newData = items.map((item) => ({
+            element: new Date(item[0]).toLocaleDateString('pt-BR'),
+            openprice: item[1],
+            maxprice: item[2],
+            minprice: item[3],
+            closeprice: item[4],
+          }));
+      
+          return newData;
+        }).flat();
+      
   
-    try {
-      const responses = await Promise.all(requests);
-      const data = responses.map((response) => {
-        const items = response.data;
-    
-        const newData = items.map((item) => ({
-          element: new Date(item[0]).toLocaleDateString('pt-BR'),
-          openprice: item[1],
-          maxprice: item[2],
-          minprice: item[3],
-          closeprice: item[4],
-        }));
-    
-        return newData;
-      }).flat();
-    
-
-      // console.table(data);
-      commit.commit('setData' , data)
-    } catch (error) {
-      console.error(error);
+        // console.table(data);
+        commit.commit('setData' , data)
+      } catch (error) {
+        console.error(error);
+      }
     }
-
 
 //     const symbols = ['BTCUSDT', 'ETHUSDT', 'BNBUSDT'] // lista de símbolos de moeda desejados
 
@@ -95,7 +105,6 @@ console.log(startTime);
     // console.log(moedasUSDT );
     
   }
-}
 
 export default {
   state,

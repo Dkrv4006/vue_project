@@ -1,9 +1,13 @@
 <template>
+  <div class="container">
+    
     <Bar
       id="my-chart-id"
       :options="chartOptions"
       :data="chartData"
     />
+  </div>
+
   </template>
   
   <script>
@@ -17,16 +21,52 @@
     components: { Bar },
     data() {
       return {
-        chartData: {
-          labels: [ 'January', 'February', 'March' ],
-          datasets: [ { data: [40, 20, 12] } ]
-        },
-        chartOptions: {
-          responsive: true
-        }
-      }
+
     }
-  }
+  },
+  methods: {
+    ta(){
+      this.$store.dispatch('fetchData')
+    },
+   
+
+  },
+    computed:{
+      
+      chartData(){
+        const data = ['daniel','renata','joao']
+        return{
+            labels: this.lista.map(i => i.element),
+            datasets: [ { data: this.lista.map(i => i.openprice) } ]
+
+        }
+      },
+      chartOptions(){
+        return{
+          responsive: true,
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+
+
+        }
+      },
+
+    lista() {
+    return this.$store.state.api.data
+    }
+  },
+  mounted () {
+
+        this.ta()
+  },
+}
+  
+  
   </script>
+
+<style>
+.container{
+  width: 100%;
+}
+</style>
   
   

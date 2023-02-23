@@ -1,20 +1,28 @@
-<script setup>
-import TheWelcome from '../components/TheWelcome.vue'
-import { RouterLink, RouterView } from 'vue-router'
-</script>
-
 <template>
-
-    <h1>Transaction</h1>
-
-</template>
-
-<style scoped>
-
-div{
- background: green;
-}
-
-
-
-</style>
+    <div>
+      <div v-for="(ticker, index) in tickers" :key="index">
+        {{ ticker.symbol }}: {{ ticker.price }}
+      </div>
+    </div>
+  </template>
+  
+  <script>
+  import WebSocket from 'ws'
+  
+  export default {
+    data() {
+      return {
+        tickers: []
+      }
+    },
+    mounted() {
+      const socket = new WebSocket('wss://stream.binance.com:9443/ws/!ticker@arr')
+  
+      socket.on('message', (data) => {
+        const tickers = JSON.parse(data).map(item => ({ symbol: item.s, price: item.c }))
+        this.tickers = tickers
+      })
+    }
+  }
+  </script>
+  
