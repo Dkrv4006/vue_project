@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const state = {
-  data: ["1daniel"],
+  data: [''],
   coin: ['ADAUSDT']
 
 }
@@ -19,22 +19,28 @@ const mutations = {
 }
 
 const actions = {
-  async  fetchData(commit) {
+  async  fetchData(commit, payload) {
 
 
     
   //   const moedasUSDT = dat.filter(item => item.symbol.slice(-4) === 'USDT');
 
-    const symbols = this.state.api.coin // lista de símbolos das moedas que você deseja obter o histórico
+    const symbols = []// lista de símbolos das moedas que você deseja obter o histórico
 const interval = '1M'; // intervalo de tempo mensal
 const limit = 12; // número máximo de resultados (12 meses)
 const startTime = new Date().setFullYear(new Date().getFullYear() - 1); // data de um ano atrás
 const endTime = Date.now(); // data atual
-console.log(symbols);
+if(payload !== undefined){
+  symbols.push(payload)
+  console.log(this.setData);
+}else{
+  console.log(this.setData);
+  symbols.push('BTCUSDT')
+}
 
 
 const requests = symbols.map(symbol => {
-  const url = `https://api.binance.com/api/v3/klines?symbol=${symbol}&interval=${interval}&limit=${limit}&startTime=${startTime}&endTime=${endTime}`;
+  const url = `https://api.binance.com/api/v3/klines?symbol=${symbols}&interval=${interval}&limit=${limit}&startTime=${startTime}&endTime=${endTime}`;
   return axios.get(url);
 });
 

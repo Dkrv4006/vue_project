@@ -7,6 +7,14 @@
       :data="chartData"
     />
   </div>
+  <div>
+    <select v-model="selectedOption">
+      <option value="ADAUSDT">ADA</option>
+      <option value="ETHUSDT">ETH</option>
+      <option value="BTCUSDT">BTC</option>
+    </select>
+    <button @click="submit">Enviar</button>
+  </div>
 
   </template>
   
@@ -21,10 +29,16 @@
     components: { Bar },
     data() {
       return {
-
+        selectedOption: {
+          type: String,
+          default: 'BTCUSDT'
+        }
     }
   },
   methods: {
+    submit() {
+      this.$store.dispatch('fetchData', this.selectedOption)
+    },
     ta(){
       this.$store.dispatch('fetchData')
     },
@@ -45,7 +59,7 @@
         return{
           responsive: true,
             backgroundColor: 'rgba(255, 99, 132, 0.2)',
-
+            borderRadius: 5,
 
         }
       },

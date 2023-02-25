@@ -17,7 +17,7 @@
         coins: [],
       };
     },
-    async created() {
+    // async created() {
     //   const apiKey = '3d1fac3f-7cae-48cd-994d-7c085aba9619';
     //   const symbols = 'BTC,ETH';
     //   const limit = 2;
@@ -35,26 +35,26 @@
     //     price: data[key].quote.USD.price,
     //     logo: `https://s2.coinmarketcap.com/static/img/coins/64x64/${data[key].id}.png`,
     //   }));
-    new Promise(async (resolve, reject) => {
-  try {
-    response = await axios.get('https://sandbox-api.coinmarketcap.com/v1/cryptocurrency/listings/latest', {
-      headers: {
-        "X-CMC_PRO_API_KEY": '3d1fac3f-7cae-48cd-994d-7c085aba9619',
-      },
-    });
-  } catch(ex) {
-    response = null;
-    // error
-    console.log(ex);
-    reject(ex);
-  }
-  if (response) {
-    // success
-    const json = response.data;
-    console.log(json);
-    resolve(json);
-  }
-});
-    },
+//     new Promise(async (resolve, reject) => {
+//   try {
+//     response = await axios.get('https://sandbox-api.coinmarketcap.com/v1/cryptocurrency/listings/latest', {
+//       headers: {
+//         "X-CMC_PRO_API_KEY": '3d1fac3f-7cae-48cd-994d-7c085aba9619',
+//       },
+//     });
+//   } catch(ex) {
+//     response = null;
+//     // error
+//     console.log(ex);
+//     reject(ex);
+//   }
+//   if (response) {
+//     // success
+//     const json = response.data;
+//     console.log(json);
+//     resolve(json);
+//   }
+// });
+//     },
   };
   </script>
