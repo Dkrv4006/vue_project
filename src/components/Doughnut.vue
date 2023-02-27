@@ -2,6 +2,7 @@
     <Doughnut :data="Data" :options="Option" />
   </template>
   
+  
   <script lang="ts">
   import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
   import { Doughnut } from 'vue-chartjs'

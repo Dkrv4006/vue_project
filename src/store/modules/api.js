@@ -2,20 +2,21 @@ import axios from "axios"
 
 const state = {
   data: [''],
-  coin: ['ADAUSDT']
+  coin: ['']
 
 }
 
 const mutations = {
   setData(state, data) {
     state.data = data
-    console.log(state, data);
+
   },
   setCoin(state,coin){
     state.coin = coin
-    // console.log('DAniel');
+    console.log(coin);
      
-  }
+  },
+
 }
 
 const actions = {
@@ -38,7 +39,7 @@ if(payload !== undefined){
   symbols.push('BTCUSDT')
 }
 
-
+commit.commit('setCoin',symbols)
 const requests = symbols.map(symbol => {
   const url = `https://api.binance.com/api/v3/klines?symbol=${symbols}&interval=${interval}&limit=${limit}&startTime=${startTime}&endTime=${endTime}`;
   return axios.get(url);

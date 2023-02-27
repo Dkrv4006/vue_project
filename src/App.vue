@@ -1,23 +1,33 @@
 <template>
 	<div class="app">
 		<!-- Sidebar -->
-		<Sidebar />
+		<Sidebar/>
+		
+	
 
+		
 		<!-- Content -->
-		<router-view />
+		<div id="container">
+
+			<router-view />
+		</div>
 	</div>
 </template>
 
 <script setup>
+import Dashboard from './Layout/Dashboard.vue';
 import Sidebar from './Layout/Sidebar.vue'
+import Heade from './components/Heade.vue';
 </script>
 
 <style >
 :root {
-	--primary: #3eb9af;
-	--primary-alt: #12b8af;
+	--primary: #0998FE;
+	--primary100: #0998fe75;
+	--primary-alt:  #9801F5;
 	--grey: #64748b;
 	--dark: #1e293b;
+	--darkblack: #101620;
 	--dark-alt: #334155;
 	--light: #f1f5f9;
 	--sidebar-width: 300px;
@@ -41,14 +51,18 @@ button {
 	outline: none;
 	background: none;
 }
+#container{
+	width: 100%;
+	padding: 20px;
+	background: var(--darkblack);
+}
 
 .app {
 	display: flex;
+	max-width: 1500px;
+	position: relative;
 }
-	main {
-		flex: 1 1 0;
-		padding: 2rem;
-  }
+
 @media (max-width: 1024px) {
       main {
 

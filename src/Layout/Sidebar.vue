@@ -75,6 +75,8 @@ const ToggleMenu = () => {
     color: var(--primary); }
 
 aside {
+ 
+
   display: flex;
   flex-direction: column;
   background-color: var(--dark);
@@ -150,7 +152,7 @@ aside {
       z-index: 99; } }
 
 .is-expanded {
-  width: var(--sidebar-width); }
+  width: 200px }
   .is-expanded .menu-toggle-wrap {
     top: -3rem; }
     .is-expanded .menu-toggle-wrap .menu-toggle {

@@ -42,7 +42,7 @@
   datasets: [
     {
       label: 'Data One',
-      backgroundColor: '#f87979',
+      backgroundColor: '#000',
       data: this.list.map(i => i.closeprice)
     }
   ]
@@ -101,10 +101,8 @@
         },
 
 
+
         list(){
-            console.log('daniel');
-            
-            console.log(this.$store.state.api.data);
             
             return this.$store.state.api.data
             
