@@ -2,7 +2,6 @@
 
 import Modal from '../components/modal.vue'
 
-
 export default {
 
   data(){
@@ -35,6 +34,7 @@ export default {
 
 </script>
 <template>
+  <title>About</title>
  <div class="al">
     <h2>Dados da API:</h2>
     <button @click="open" >daniel</button>
