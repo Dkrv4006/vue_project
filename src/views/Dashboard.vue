@@ -1,34 +1,32 @@
 <template>
-  <div class="container">
+  <title>Dashboard</title>
+  <Loading  v-if="isLoading"/>
+  <main v-else>
     
-    <Bar
-      id="my-chart-id"
-      :options="chartOptions"
-      :data="chartData"
-    />
-  </div>
-  <div>
-    <select v-model="selectedOption">
-      <option value="ADAUSDT">ADA</option>
-      <option value="ETHUSDT">ETH</option>
-      <option value="BTCUSDT">BTC</option>
-    </select>
-    <button @click="submit">Enviar</button>
-  </div>
+    <Heade/>
+      <Home/>
+      <ChartConumn type-chart="column"/>
+
+
+  </main>
+ 
 
   </template>
   
   <script>
-  import { Bar } from 'vue-chartjs'
-  import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
-  
-  ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
+
+import ChartConumn from '../components/Chart/ChartConumn.vue'
+import Heade from '../components/Heade.vue'
+import Home from '../components/Home.vue';
+// import Loading from '@/components/Loading.vue';
+import Loading from '../components/Loading.vue';
   
   export default {
     name: 'BarChart',
-    components: { Bar },
+    components: { ChartConumn, Heade, Loading, Home },
     data() {
       return {
+        isLoading: true,
         selectedOption: {
           type: String,
           default: 'BTCUSDT'
@@ -43,26 +41,9 @@
       this.$store.dispatch('fetchData')
     },
    
-
   },
     computed:{
       
-      chartData(){
-        const data = ['daniel','renata','joao']
-        return{
-            labels: this.lista.map(i => i.element),
-            datasets: [ { data: this.lista.map(i => i.openprice) } ]
-
-        }
-      },
-      chartOptions(){
-        return{
-          responsive: true,
-            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-            borderRadius: 5,
-
-        }
-      },
 
     lista() {
     return this.$store.state.api.data
@@ -71,15 +52,24 @@
   mounted () {
 
         this.ta()
+        setTimeout(() => {
+      this.isLoading = false;
+    }, 1000);
   },
 }
   
   
   </script>
 
-<style>
+<style scoped>
+main{
+  width: 100%;
+
+}
+
 .container{
   width: 100%;
+  padding: 20px;
 }
 </style>
   
