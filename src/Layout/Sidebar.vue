@@ -1,50 +1,53 @@
 <template>
 	<aside :class="`${is_expanded ? 'is-expanded' : ''}`">
-		<div class="logo">
-      <div class="lo"><i class="fi fi-rr-d"></i></div>
-			<!-- <img :src="logoURL" alt="Vue" />  -->
-		</div>
+    <div class="ddd">
 
-		<div class="menu-toggle-wrap">
-			<button class="menu-toggle" @click="ToggleMenu">
-				<span class="material-icons"><i class="fi fi-rr-angle-right"></i></span>
-			</button>
-		</div>
-
-		<h3>Menu</h3>
-		<div class="menu">
-
-			<router-link to="/" class="button">
-				<span class="material-icons"><i class="fi fi-rr-apps"></i></span>
-				<span class="text">Dashboard</span>
-			</router-link>
-
-      <router-link to="/about" class="button">
-        <span class="material-icons"><i class="fi fi-rr-chat-arrow-grow"></i></span>
-        <span class="text">Rendimento</span>
-      </router-link>
-
-			<router-link to="/wallet" class="button">
-				<span class="material-icons"><i class="fi fi-rr-chart-pie-alt"></i></span>
-				<span class="text">Wallet</span>
-			</router-link>
-
-			<router-link to="/transaction" class="button">
-				<span class="material-icons"><i class="fi fi-rr-credit-card"></i></span>
-				<span class="text">Tranvações</span>
-			</router-link>
-
-
-		</div>
-
-		<div class="flex"></div>
-		
-		<div class="menu">
-			<router-link to="/settings" class="button">
-				<span class="material-icons"><i class="fi fi-rr-settings"></i></span>
-				<span class="text">Settings</span>
-			</router-link>
-		</div>
+      <div class="logo">
+        <div class="lo"><i class="fi fi-rr-d"></i></div>
+        <!-- <img :src="logoURL" alt="Vue" />  -->
+      </div>
+  
+      <div class="menu-toggle-wrap">
+        <button class="menu-toggle" @click="ToggleMenu">
+          <span class="material-icons"><i class="fi fi-rr-angle-right"></i></span>
+        </button>
+      </div>
+  
+      <h3>Menu</h3>
+      <div class="menu">
+  
+        <router-link to="/" class="button">
+          <span class="material-icons"><i class="fi fi-rr-apps"></i></span>
+          <span class="text">Dashboard</span>
+        </router-link>
+  
+        <router-link to="/about" class="button">
+          <span class="material-icons"><i class="fi fi-rr-chat-arrow-grow"></i></span>
+          <span class="text">Rendimento</span>
+        </router-link>
+  
+        <router-link to="/wallet" class="button">
+          <span class="material-icons"><i class="fi fi-rr-chart-pie-alt"></i></span>
+          <span class="text">Wallet</span>
+        </router-link>
+  
+        <router-link to="/transaction" class="button">
+          <span class="material-icons"><i class="fi fi-rr-credit-card"></i></span>
+          <span class="text">Tranvações</span>
+        </router-link>
+  
+  
+      </div>
+  
+      <div class="flex"></div>
+      
+      <div class="menu">
+        <router-link to="/settings" class="button">
+          <span class="material-icons"><i class="fi fi-rr-settings"></i></span>
+          <span class="text">Settings</span>
+        </router-link>
+      </div>
+    </div>
 	</aside>
 </template>
 
@@ -63,6 +66,7 @@ const ToggleMenu = () => {
 
 <style  scoped>
 
+
 .lo{
   font-size: 30px;
   font-weight: 900;
@@ -75,7 +79,6 @@ const ToggleMenu = () => {
     color: var(--primary); }
 
 aside {
- 
 
   display: flex;
   flex-direction: column;
@@ -85,14 +88,22 @@ aside {
   overflow: hidden;
   min-height: 100vh;
   padding: 1rem;
-  transition: 0.2s ease-in-out; }
+  transition: 0.2s ease-in-out; 
+  /* position: relative; */
+
+  position: fixed;
+  z-index: 1000;
+
+}
+
+
   aside .flex {
     flex: 1 1 0%; }
   aside .logo {
     margin-bottom: 1rem; }
     aside .logo img {
       width: 2rem; }
-  aside .menu-toggle-wrap {
+.ddd .menu-toggle-wrap {
     display: flex;
     justify-content: flex-end;
     margin-bottom: 1rem;

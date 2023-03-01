@@ -26,6 +26,7 @@ import { chart } from 'highcharts';
     },
     methods:{
         dada(ds){
+          this.$store.dispatch('fetch')
             alert(ds)
         }
     },
@@ -53,6 +54,14 @@ import { chart } from 'highcharts';
           onclick: function () {
             alert('clicked');
           },
+          color: {
+    linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
+    stops: [
+        [0, '#003399'], // start
+        [0.5, '#ffffff'], // middle
+        [1, '#3366AA'] // end
+    ]
+}
          
         },{
           text: 'custom button',
@@ -63,6 +72,22 @@ import { chart } from 'highcharts';
         },{
           text: 'custom button',
           onclick: this.dada,
+          theme: {
+                'stroke-width': 1,
+                stroke: 'silver',
+                fill: '#0998FE',
+                borderRadius:20,
+                r: 0,
+                states: {
+                    hover: {
+                        fill: '#a4edba'
+                    },
+                    select: {
+                        stroke: '#039',
+                        fill: '#a4edba'
+                    }
+                }
+            }
           
         
           
@@ -70,6 +95,7 @@ import { chart } from 'highcharts';
         }]
 
 },
+
 
       title: {
           text: this.$store.state.api.coin,
@@ -112,7 +138,7 @@ import { chart } from 'highcharts';
           labels: {
 
               formatter: function () {
-                  return this.value  + 'k';
+                  return 'R$ ' + this.value
               }, style: {
             color: '#0998FE',
             fontWeight: 'bold'
@@ -157,7 +183,19 @@ import { chart } from 'highcharts';
           data: this.list.map(i => Number(i.openprice)),
           type: this.typeChart,
 
-      }]
+      }],
+      responsive: {
+        rules: [{
+            condition: {
+                maxWidth: 900
+            },
+            chartOptions: {
+                chart: {
+                    className: 'small'
+                }
+            }
+        }]
+    }
       }
     },
     
@@ -169,3 +207,9 @@ import { chart } from 'highcharts';
     }//computed
   };
   </script>
+
+  <style>
+.highcharts-button-normal{
+  color:#fff;
+}
+</style>

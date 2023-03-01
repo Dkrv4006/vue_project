@@ -2,15 +2,36 @@
     <div class="home">
 
         <div class="card card-style">
+            <div class="card-box">
+            <h2>total</h2>
+            <i class="fa-solid fa-bitcoin-sign"></i> <span>10000</span>
+            <h3>193802</h3>
+            </div>
 
         </div>
         <div class="card">
+            <div class="card-box">
+            <h2>total</h2>
+            <span>10000</span>
+            <h3>193802</h3>
+            </div>
+
+        </div>
+ 
+        <div class="card">
+            <div class="card-box">
+            <h2>total</h2>
+            <span>10000</span>
+            <h3>193802</h3>
+            </div>
 
         </div>
         <div class="card">
-
-        </div>
-        <div class="card">
+            <div class="card-box">
+            <h2>total</h2>
+            <span>10000</span>
+            <h3>193802</h3>
+            </div>
 
         </div>
 
@@ -35,6 +56,7 @@
 .card {
     height: 120px;
     flex: 1  200px;
+    padding: 10px 20px;
     
     border-radius: 10px;
     background: var(--dark);
@@ -49,6 +71,14 @@
   0px 0px 5px #9801F5,
   0px 0px 9px #01A0FF
 }
+span{
+    color: #fff;
+    font-size: 50px;
 
+}
+i{
+    font-size: 50px;
+    color: #fff;
+}
         
 </style>

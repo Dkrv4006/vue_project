@@ -31,9 +31,10 @@ const interval = '1M'; // intervalo de tempo mensal
 const limit = 12; // número máximo de resultados (12 meses)
 const startTime = new Date().setFullYear(new Date().getFullYear() - 1); // data de um ano atrás
 const endTime = Date.now(); // data atual
+console.log(startTime);
+console.log(endTime);
 if(payload !== undefined){
   symbols.push(payload)
-  console.log(this.setData);
 }else{
   console.log(this.setData);
   symbols.push('BTCUSDT')
@@ -68,6 +69,29 @@ const requests = symbols.map(symbol => {
       } catch (error) {
         console.error(error);
       }
+    },
+
+//     const symbols = ['BTCUSDT', 'ETHUSDT', 'BNBUSDT'] // lista de símbolos de moeda desejados
+  async  fetch(commit, payload) {
+
+   const dat = await  axios.get('https://api.binance.com/api/v3/ticker/24hr')
+    .then(response => response.data)
+    .catch(error => {
+      console.error(error)
+    })
+    const data = new Date().getTime()
+    const dataFormatada = new Date(data).toLocaleDateString('pt-BR')
+    console.log(Date.now())
+    
+    
+    const moedasUSDT = dat.filter(item => item.symbol.slice(-4) === 'USDT');
+    // commit.commit('setData' , moedasUSDT)
+
+
+
+    console.log(moedasUSDT );
+
+
     }
 
 //     const symbols = ['BTCUSDT', 'ETHUSDT', 'BNBUSDT'] // lista de símbolos de moeda desejados

@@ -5,7 +5,16 @@
     
     <Heade/>
       <Home/>
-      <ChartConumn type-chart="column"/>
+      <div class="chart">
+        <div class="grafico">
+          <ChartConumn type-chart="column"/>
+        </div>
+        <div class="grafico">
+
+          <ChartSolidgauge/>
+        </div>
+        <Dashcoin/>
+      </div>
 
 
   </main>
@@ -15,7 +24,9 @@
   
   <script>
 
-import ChartConumn from '../components/Chart/ChartConumn.vue'
+import ChartConumn from '../components/Chart/ChartColumn.vue'
+import ChartSolidgauge from '../components/Chart/ChartSolidgauge.vue';
+import Dashcoin from '../components/Dashcoin.vue';
 import Heade from '../components/Heade.vue'
 import Home from '../components/Home.vue';
 // import Loading from '@/components/Loading.vue';
@@ -23,7 +34,7 @@ import Loading from '../components/Loading.vue';
   
   export default {
     name: 'BarChart',
-    components: { ChartConumn, Heade, Loading, Home },
+    components: { ChartConumn, Heade, Loading, Home, ChartSolidgauge, Dashcoin },
     data() {
       return {
         isLoading: true,
@@ -54,7 +65,7 @@ import Loading from '../components/Loading.vue';
         this.ta()
         setTimeout(() => {
       this.isLoading = false;
-    }, 1000);
+    }, 300);
   },
 }
   
@@ -66,10 +77,25 @@ main{
   width: 100%;
 
 }
+.chart{
+  display: flex;
+  gap: 20px;
+  width: 100%;
+}
 
 .container{
   width: 100%;
   padding: 20px;
+}
+
+.chart {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.graficos {
+    width: 700px;
+    flex-grow: 1;
 }
 </style>
   

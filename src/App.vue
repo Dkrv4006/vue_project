@@ -54,6 +54,7 @@ button {
 #container{
 	width: 100%;
 	padding: 20px;
+	margin-left: 60px;
 	background: var(--darkblack);
 }
 
