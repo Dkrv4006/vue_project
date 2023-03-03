@@ -2,32 +2,31 @@
     <div class="carrossel">
       <div class="carrossel-container"  ref="container">
         <div v-for="(item, index) in items" :key="index" class="carrossel-item">
-          {{ item }}
+          <i :class="item.icon"></i>
+          <span>daniel</span>
+          <!-- {{ item.name }} -->
         </div>
       </div>
     </div>
   </template>
   
   <script>
+  import btc from '../../public/SVG/btc.svg'
   export default {
     data() {
       return {
         items: [
         {
           name: "Bitcoin",
-      icon:''
+          icon: 'cf cf-btc'
     },
     {
       name: "Ethereum",
-      icon:''
-    },
-    {
-      name: "Binance Coin",
-      icon:''
+      icon:'cf cf-ebtc'
     },
     {
       name: "Cardano",
-      icon:''
+      icon:'cf cf-ada'
     },
     {
       name: "Dogecoin",
@@ -59,10 +58,6 @@
     },
     {
       name: "Stellar",
-      icon:''
-    },
-    {
-      name: "Theta Token",
       icon:''
     },
     {
@@ -105,15 +100,20 @@
   
   <style scoped>
   .carrossel {
-    width: 100%;
+    width:100%;
+    max-width: 100%;
+ 
     overflow: hidden;
     position: relative;
   }
   
   .carrossel-container {
     display: flex;
+    gap: 10px;
     animation: slide 20s linear infinite;
     white-space: nowrap;
+
+
   }
   
   @keyframes slide {
@@ -124,14 +124,17 @@
       transform: translateX(-200%);
     }
   }
+  .carrossel-item{
+    border-radius: 30px;
+  }
   
   .carrossel-item {
-    flex: 0 0 300px;
-    margin-right: 10px;
+    flex: 0 0 200px;
+
     background-color: #ccc;
-    padding: 20px;
+    padding: 20px 5px;
     text-align: center;
-    animation: slide-reverse 20s linear infinite;
+    /* animation: slide-reverse 20s linear infinite; */
   }
 /*   
   @keyframes slide-reverse {
@@ -142,5 +145,11 @@
       transform: translateX(0);
     }
   } */
+
+  i{
+    width: 40%;
+    height: 100%;
+    background: red;
+  }
   </style>
   
