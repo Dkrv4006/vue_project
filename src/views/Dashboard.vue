@@ -51,6 +51,9 @@ import Loading from '../components/Loading.vue';
     ta(){
       this.$store.dispatch('fetchData')
     },
+    mony(){
+      this.$store.dispatch('mony')
+    }, 
    
   },
     computed:{
@@ -65,7 +68,9 @@ import Loading from '../components/Loading.vue';
         this.ta()
         setTimeout(() => {
       this.isLoading = false;
-    }, 300);
+    }, 300),
+
+    this.mony()
   },
 }
   
