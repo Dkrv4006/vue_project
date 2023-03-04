@@ -12,7 +12,8 @@ export default {
       negotiation: 'deposit',
       nome: '',
       email: '',
-      mensagem: ''
+      mensagem: '',
+      filter: ''
 
     }
   },
@@ -36,9 +37,14 @@ export default {
         setInterval(this.ta, 10000000);
     },
     computed: {
+      filterSymbol(){
+        const filter = this.filter.toLowerCase()
+        return this.lista.filter(symbol  => symbol.symbol.toLowerCase().includes(filter))
+      },
         lista() {
-            return this.$store.state.api.data;
+            return this.$store.state.api.mony;
         },
+        
 
     estiloAtivo() {
       return {
@@ -57,9 +63,11 @@ export default {
         backgroundColor: 'gray',
         color: 'black'
       };
-    }
+    },
+    
   
     },
+
     components: { Modal, Button }
 }
 
@@ -103,7 +111,24 @@ export default {
         </li>
       </ul> -->
     </div>
+
+    <input type="text" v-model="filter">
+    <h4>{{ this.filter }}</h4>
     
+  </div>
+
+  <div>
+    <div class="heade">
+      <span>symbol</span>
+      <span>symbol</span>
+      <span>symbol</span>
+    </div>
+    <div class="mony" v-for=" item in filterSymbol">
+      <div class="symbol">{{ item.symbol }}</div>
+      <div class="price">{{ item.askPrice }}</div>
+      <div :class="item.priceChangePercent < 0 ? 'min' : 'max' " >{{ item.priceChangePercent }} %</div>
+
+    </div>
   </div>
 
 
@@ -114,7 +139,20 @@ export default {
 
 <style scoped>
 
+.heade{
+  width: 100%;
+  padding: 10px;
+  border-bottom: 2px solid var(--dark-alt);
+  background: var(--darkblack);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: sticky;
+  top: 0;
+}
 .al{
+  width: 100%;
   position: relative;
   list-style: none;
 }
@@ -151,6 +189,23 @@ input{
   gap: 10px;
 }
 
+.mony{
+  display: flex;
+  justify-content: space-around;
 
+  padding: 10px 0;
+  border-bottom: 1px solid var(--dark-alt);
+
+}
+.min{
+  color: red;
+}
+.max{
+  color: green;
+}
+span{
+  font-size: 30px;
+  color: var(--primary);
+}
 
 </style>
