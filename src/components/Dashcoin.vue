@@ -2,9 +2,10 @@
     <div class="carrossel">
       <div class="carrossel-container"  ref="container">
         <div v-for="(item, index) in items" :key="index" class="carrossel-item">
-          <i :class="item.icon"></i>
-          <span>daniel</span>
-          <!-- {{ item.name }} -->
+          <div class="icon">
+            <i :class="item.icon"></i>
+          </div>
+          <span>{{ item.name }}</span>
         </div>
       </div>
     </div>
@@ -30,68 +31,43 @@
     },
     {
       name: "Dogecoin",
-      icon:''
+      icon:'cf cf-doge'
     },
     {
       name: "XRP",
-      icon:''
+      icon:'cf cf-xrp'
    , },
     {
       name: "Polkadot",
-      icon:''
-    },
-    {
-      name: "Uniswap",
-      icon:''
+      icon:'cf cf-dot'
     },
     {
       name: "Litecoin",
-      icon:''
+      icon:'cf cf-ltc'
     },
     {
       name: "Chainlink",
-      icon:''
+      icon:'cf cf-link'
+    },
+
+    {
+      name: "Gala",
+      icon:'cf cf-gala'
     },
     {
-      name: "Bitcoin Cash",
-      icon:''
+      name: "Hedera",
+      icon:'cf cf-hbar'
     },
-    {
-      name: "Stellar",
-      icon:''
-    },
-    {
-      name: "VeChain",
-      icon:''
-    },
-    {
-      name: "EOS",
-      icon:''
-   , },
-    {
-      name: "Filecoin",
-      icon:''
-    },
-    {
-      name: "TRON",
-      icon:''
-  ,  },
     {
       name: "Solana",
-      icon:''
-,    },
-    {
-      name: "Cosmos",
-      icon:''
-,    },
-    {
-      name: "Algorand",
-      icon:''
-    }
+      icon:'cf cf-sol'
+   },
+   {
+      name: "Poly",
+      icon:'cf cf-matic'
+    },
+
         ],
-        offset: 0,
-        currentIndex: 0,
-        width: 0,
       };
     },
 
@@ -99,6 +75,11 @@
   </script>
   
   <style scoped>
+span{
+   width: 70%;
+   color: white;
+   font-size: 16px;
+  }
   .carrossel {
     width:100%;
     max-width: 100%;
@@ -110,11 +91,26 @@
   .carrossel-container {
     display: flex;
     gap: 10px;
-    animation: slide 20s linear infinite;
-    white-space: nowrap;
-
-
+    animation: slide 40s linear infinite;
+    /* white-space: nowrap; */
+    
+    
   }
+.icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35%;
+    height: 100%;
+    border-radius: 60px;
+    background: rgb(26, 26, 26);
+  }
+.icon > i{
+  font-size: 40px;
+  color: var(--primary)
+}
+
+
   
   @keyframes slide {
     0% {
@@ -125,14 +121,17 @@
     }
   }
   .carrossel-item{
-    border-radius: 30px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
   
   .carrossel-item {
-    flex: 0 0 200px;
-
-    background-color: #ccc;
-    padding: 20px 5px;
+    flex: 0 0 170px;
+    height: 60px;
+    background-color: #1e293b;
+    padding: 1px;
     text-align: center;
     /* animation: slide-reverse 20s linear infinite; */
   }
@@ -146,10 +145,5 @@
     }
   } */
 
-  i{
-    width: 40%;
-    height: 100%;
-    background: red;
-  }
   </style>
   
