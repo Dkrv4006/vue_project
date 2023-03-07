@@ -117,18 +117,20 @@ export default {
     
   </div>
 
-  <div>
-    <div class="heade">
-      <span>symbol</span>
-      <span>symbol</span>
-      <span>symbol</span>
-    </div>
-    <div class="mony" v-for=" item in filterSymbol">
-      <div class="symbol">{{ item.symbol }}</div>
-      <div class="price">{{ item.askPrice }}</div>
-      <div :class="item.priceChangePercent < 0 ? 'min' : 'max' " >{{ item.priceChangePercent }} %</div>
+  <div class="heade">
+    <table>
+      <tr>
+        <th>Symbol</th>
+        <th>Price</th>
+        <th>Percent</th>
+     </tr>
+      <tr class="mony" v-for=" item in filterSymbol">
+          <td class="symbol">{{ item.symbol }}</td>
+          <td class="price">{{ Number(item.askPrice).toFixed(3) }}</td>
+          <td :class="item.priceChangePercent < 0 ? 'min' : 'max' " >{{ item.priceChangePercent }} %</td>
+      </tr>
+    </table>
 
-    </div>
   </div>
 
 
@@ -189,14 +191,7 @@ input{
   gap: 10px;
 }
 
-.mony{
-  display: flex;
-  justify-content: space-around;
 
-  padding: 10px 0;
-  border-bottom: 1px solid var(--dark-alt);
-
-}
 .min{
   color: red;
 }
@@ -206,6 +201,28 @@ input{
 span{
   font-size: 30px;
   color: var(--primary);
+}
+.price, .symbol{
+  text-align: end;
+  color: white;
+}
+table{
+  width: 100%;
+  border-collapse: collapse;
+}
+th{
+  font-size: 30px;
+}
+tr {
+  font-size: 18px;
+   text-align: start;
+   width: 100%;
+}
+.symbol, .price , .max, .min{
+
+  text-align: center;
+  border-bottom: 2px solid rgb(92, 92, 92);
+  padding: 10px;
 }
 
 </style>
